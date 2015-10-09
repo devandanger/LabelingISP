@@ -18,34 +18,27 @@
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
     <encoding>UTF-8</encoding>
-    <scala.version>2.11.5</scala.version>
-    <scala.compat.version>2.11</scala.compat.version>
+    <scala.version>2.11.0</scala.version>
+    <scala.compat.version>2.11.0</scala.compat.version>
   </properties>
 
   <dependencies>
+	<dependency>
+	  <groupId>com.github.haifengl</groupId>
+	  <artifactId>smile-core</artifactId>
+	  <version>1.0.3</version>
+	</dependency>
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
       <version>${scala.version}</version>
     </dependency>
 
-    <!-- Test -->
+	<!-- Test -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.specs2</groupId>
-      <artifactId>specs2-core_${scala.compat.version}</artifactId>
-      <version>2.4.16</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala.compat.version}</artifactId>
-      <version>2.2.4</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -67,7 +60,6 @@
             </goals>
             <configuration>
               <args>
-                <arg>-make:transitive</arg>
                 <arg>-dependencyfile</arg>
                 <arg>${project.build.directory}/.scala_dependencies</arg>
               </args>

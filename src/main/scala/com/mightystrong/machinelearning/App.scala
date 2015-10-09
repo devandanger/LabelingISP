@@ -1,20 +1,33 @@
 package com.mightystrong.machinelearning
 
+import scala.swing._
 import scala.io.Source
 import java.io.File
+import smile.plot.ScatterPlot
+import java.awt.Color
 /**
  * @author ${user.name}
  */
 object KNNExample {
-  
-  def foo(x : Array[String]) = x.foldLeft("")((a,b) => a + b)
+
+  object GUI extends SimpleSwingApplication {
+	def top = new MainFrame {
+	  	title = "KNN Example"
+	  	val basePath = "KNN_Example_1.csv"
+	  	val testData = getDataFromCSV(new File(basePath))
+	  	val plot = ScatterPlot.plot(testData._1,
+	                                 testData._2, 
+	                                 '@', 
+	                                 Array(Color.red, Color.blue)
+	                                )
+	    peer.setContentPane(plot)
+	    size = new Dimension(400, 400)
+	  }
+  }
   
   def main(args : Array[String]) {
-  	var getCurrentDirectory = new java.io.File( "." ).getCanonicalPath
-  	println(getCurrentDirectory)
-	val basePath = "KNN_Example_1.csv"
-	val testData = getDataFromCSV(new File(basePath))
-	}
+  	GUI.main(args)
+  }
 
   def getDataFromCSV(file: File): (Array[Array[Double]], Array[Int]) = {
 	var source = scala.io.Source.fromFile(file)

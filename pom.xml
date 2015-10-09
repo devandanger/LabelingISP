@@ -48,6 +48,17 @@
     <testSourceDirectory>src/test/scala</testSourceDirectory>
     <plugins>
       <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>com.mightystrong.machinelearning.KNNExample</mainClass>
+            <arguments>
+              <argument>argument1</argument>
+            </arguments>
+        </configuration>
+      </plugin>
+      <plugin>
         <!-- see http://davidb.github.com/scala-maven-plugin -->
         <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>
